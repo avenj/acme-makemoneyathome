@@ -1,4 +1,5 @@
 package Acme::MakeMoneyAtHome;
+
 use strict; use warnings FATAL => 'all';
 
 use Exporter 'import'; our @EXPORT = 'make_money_at_home';
@@ -71,20 +72,24 @@ our @Activity = (
 
 
 sub make_money_at_home {
+  my $activity = $Activity[rand @Activity];
+
   my @people;
   do {
     my $new_subj = $Subject[rand @Subject];
     push @people, $new_subj unless grep {; $_ eq $new_subj } @people
   } until @people == 3;
-  my $activity = $Activity[rand @Activity];
+
   my $unemploy = (int rand 36) + 4;
   my $hourly   = (int rand 60) + 40;
   my $monthly  = (int rand 10_000) + 10_000;
-  my $gender   = int rand 2 ? 'He' : 'She';
+
+  my @gender   = int rand 2 ? ('He', 'his') : ('She', 'her') ;
 
   "My $people[0]'s $people[1]'s $people[2] makes \$$hourly an hour on the "
-  ."computer. $gender has been without work for $unemploy months but last month "
-  ."her pay was \$$monthly from just $activity a few hours per day."
+  ."computer. $gender[0] has been without work for $unemploy months but last "
+  ."month $gender[1] pay was \$$monthly from just $activity "
+  ."a few hours per day."
 }
 
 
