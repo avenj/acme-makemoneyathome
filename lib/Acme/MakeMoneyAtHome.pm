@@ -44,7 +44,9 @@ use strict;
 #   The 'FATAL => "all"' bit is a little contentious.
 #
 #   Fatal warnings can save your ass, or they can kill your production app
-#   at 3am -- it depends on the codebase.
+#   at 3am -- it depends on the codebase, and possibly whether violent death
+#   is more or less disturbing than unexpected data (like suddenly getting
+#   'undef' in places you expected a value).
 #
 #   I advise spending the rest of your day reading blog wars about it.
 #   Seriously.
@@ -71,7 +73,7 @@ use warnings FATAL => 'all';
 use Exporter 'import'; 
 # We need to tell Exporter just what should be exported.
 #
-#   Uh oh, sigils!
+#   Oh no, crazy leading characters!
 #   The '@' sigil indicates that '@EXPORT' is an array:
 #     our @EXPORT = ( 'myfunc', 'otherfunc', 'moarfunc' );
 #   'our @EXPORT' declares @EXPORT as a package-scoped variable;
@@ -84,12 +86,13 @@ use Exporter 'import';
 #
 #     sub FOO () { 1 }             # constants are all-uppercase
 #
-#     my $foo;    # lexicals are lower case
+#     my $foo;    # lexicals are lower case ($ sigil, this one is a scalar)
 #
-#     our $Foo;   # package vars *usually* start with an uppercase letter;
+#     our %Foo;   # package vars *usually* start with an uppercase letter;
 #                 # there's some inconsistency here, because certain special
 #                 # identifiers like $VERSION or @EXPORT are all-upper for
 #                 # hysterical raisins
+#                 # (and another common sigil -- % indicates a hash)
 #
 #     sub foo {}  # subroutines are usually lower case
 #
