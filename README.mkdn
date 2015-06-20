@@ -9,17 +9,16 @@ Acme::MakeMoneyAtHome - I made 17047 dollars just posting Acme dists to CPAN
 
 # DESCRIPTION
 
-Exports the function __make\_money\_at\_home__, which can tell you how
+Exports the function **make\_money\_at\_home**, which can tell you how
 much money your father's gym spotter's autistic goldfish made last month just
 browsing 4chan a few hours per day.
 
 # CONTRIBUTORS
 
-Maintained by Jon Portnoy <avenj@cobaltirc.org>
+Perl-ified and maintained by Jon Portnoy <avenj@cobaltirc.org>
 
-This Perl implementation is based on JavaScript written by __Gilded__, whose
-real name and contact information I'll put here if he ever trusts me enough to
-tell me.
+This Perl implementation is based on JavaScript written by **Gilded**, whose
+real name I'll put here if he ever trusts me enough to tell me.
 
 # LICENSE
 
