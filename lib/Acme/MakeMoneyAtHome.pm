@@ -78,7 +78,7 @@ sub make_money_at_home {
   my @people;
   do {
     my $new_subj = $Subject[rand @Subject];
-    $new_subj = shift @$new_subj if ref $new_subj and @people < 3;
+    $new_subj = shift @$new_subj if ref $new_subj and @people <= 2;
     push @people, $new_subj unless grep {; $_ eq $new_subj } @people
   } until @people == 3;
 
@@ -88,8 +88,8 @@ sub make_money_at_home {
 
   my @gender;
   if (ref $people[2] eq 'ARRAY') {
-    $people[2] = shift @{ $people[2] };
-    my $mf = shift @{ $people[2] };
+    my $mf;
+    ($people[2], $mf) = @{ $people[2] };
     @gender = $mf eq 'M' ? ( 'He', 'his' ) : ( 'She', 'her' );
   } else {
     @gender = int rand 2 ? ( 'He', 'his' ) : ( 'She', 'her' );
