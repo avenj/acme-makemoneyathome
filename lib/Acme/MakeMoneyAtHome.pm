@@ -76,8 +76,8 @@ sub make_money_at_home {
   my @people;
   do {
     my $new_subj = $Subject[rand @Subject];
-    $new_subj = $new_subj->[0] if ref $new_subj and @people < 3;
-    push @people, $new_subj unless grep {; $_ eq $new_subj } @people
+    $new_subj = $new_subj->[0] if ref $new_subj and @people < 2;
+    push @people, $new_subj unless grep {; $_ eq $new_subj } @people;
   } until @people == 3;
 
   my $unemploy = (int rand 36) + 4;
