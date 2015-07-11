@@ -8,7 +8,6 @@ our @EXPORT = 'make_money_at_home';
 our @Subject = (
   "roommate",
   "cousin",
-  "neighbor",
   [ "mother", 'F' ],
   [ "father", 'M' ],
   [ "sensei", 'M' ],
@@ -21,7 +20,6 @@ our @Subject = (
   [ "housemaid", 'F' ],
   "limousine driver",
   "study partner",
-  "roommate",
   [ "half-sister", 'F' ],
   [ "step-uncle", 'M' ],
   "Perl mentor",
@@ -78,7 +76,7 @@ sub make_money_at_home {
   my @people;
   do {
     my $new_subj = $Subject[rand @Subject];
-    $new_subj = shift @$new_subj if ref $new_subj and @people <= 2;
+    $new_subj = $new_subj->[0] if ref $new_subj and @people < 3;
     push @people, $new_subj unless grep {; $_ eq $new_subj } @people
   } until @people == 3;
 
@@ -88,8 +86,8 @@ sub make_money_at_home {
 
   my @gender;
   if (ref $people[2] eq 'ARRAY') {
-    my $mf;
-    ($people[2], $mf) = @{ $people[2] };
+    my ($actual, $mf) = @{ $people[2] };
+    $people[2] = $actual;
     @gender = $mf eq 'M' ? ( 'He', 'his' ) : ( 'She', 'her' );
   } else {
     @gender = int rand 2 ? ( 'He', 'his' ) : ( 'She', 'her' );
