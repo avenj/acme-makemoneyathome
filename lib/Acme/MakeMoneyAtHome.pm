@@ -9,25 +9,25 @@ our @Subject = (
   "roommate",
   "cousin",
   "neighbor",
-  "mother",
-  "father",
-  "sensei",
+  [ "mother", 'F' ],
+  [ "father", 'M' ],
+  [ "sensei", 'M' ],
   "associate",
   "senator",
   "friend",
-  "aunt",
+  [ "aunt", 'F' ],
   "employer",
   "car dealer",
-  "housemaid",
+  [ "housemaid", 'F' ],
   "limousine driver",
   "study partner",
   "roommate",
-  "half-sister",
-  "step-uncle",
+  [ "half-sister", 'F' ],
+  [ "step-uncle", 'M' ],
   "Perl mentor",
   "third cousin",
-  "mother-in-law",
-  "father-in-law",
+  [ "mother-in-law", 'F' ],
+  [ "father-in-law", 'M' ],
   "tennis partner",
   "gym spotter",
   "statistician",
@@ -35,9 +35,9 @@ our @Subject = (
   "dungeon master",
   "priest",
   "BFF",
-  "sugar daddy",
+  [ "sugar daddy", 'M' ],
   "secret lover",
-  "great grandmother",
+  [ "great grandmother", 'F' ],
   "retarded parakeet",
   "chemistry assistant",
   "meth cook",
@@ -78,6 +78,7 @@ sub make_money_at_home {
   my @people;
   do {
     my $new_subj = $Subject[rand @Subject];
+    $new_subj = shift @$new_subj if ref $new_subj and @people < 3;
     push @people, $new_subj unless grep {; $_ eq $new_subj } @people
   } until @people == 3;
 
@@ -85,7 +86,14 @@ sub make_money_at_home {
   my $hourly   = (int rand 60) + 40;
   my $monthly  = (int rand 10_000) + 10_000;
 
-  my @gender   = int rand 2 ? ('He', 'his') : ('She', 'her') ;
+  my @gender;
+  if (ref $people[2] eq 'ARRAY') {
+    $people[2] = shift @{ $people[2] };
+    my $mf = shift @{ $people[2] };
+    @gender = $mf eq 'M' ? ( 'He', 'his' ) : ( 'She', 'her' );
+  } else {
+    @gender = int rand 2 ? ( 'He', 'his' ) : ( 'She', 'her' );
+  }
 
   "My $people[0]'s $people[1]'s $people[2] makes \$$hourly an hour on the "
   ."computer. $gender[0] has been without work for $unemploy months but last "
