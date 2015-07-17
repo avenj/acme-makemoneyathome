@@ -49,6 +49,9 @@ our @Subject = (
   "personal cheerleader",
   "autistic goldfish",
   "dishwasher",
+  "valet",
+  "caddy",
+  "system administrator",
 );
 
 our @Activity = (
@@ -67,6 +70,12 @@ our @Activity = (
   "playing Farm Birds on MyFace+",
   "IRCing",
   "answering fetish surveys",
+  "finding version.pm bugs",
+  "blowing cocaine",
+  "swiping Tinder",
+  "posting to stackoverflow",
+  "watching pornography",
+  "measuring midgets",
 );
 
 
