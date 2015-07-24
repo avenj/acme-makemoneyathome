@@ -91,7 +91,7 @@ sub make_money_at_home {
 
   my $unemploy = (int rand 36) + 4;
   my $hourly   = (int rand 60) + 40;
-  my $monthly  = (int rand 10_000) + 10_000;
+  my $monthly  = (60 * $hourly) + sprintf '%.2f', rand(200);
 
   my @gender;
   if (ref $people[2] eq 'ARRAY') {
@@ -108,7 +108,7 @@ sub make_money_at_home {
   ."a few hours per day."
 }
 
-1;
+print make_money_at_home."\n" unless caller; 1;
 
 
 =pod
