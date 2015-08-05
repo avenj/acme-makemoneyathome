@@ -1,5 +1,9 @@
 Revision history for Perl module Acme-MakeMoneyAtHome
 
+1.004001 2015-08-05
+
+  - Make Alex Reinhart (Capn_Refsmmat) happy by fixing monthly pay math
+
 1.003001 2015-07-17
 
   - Subject & Activity expansion
